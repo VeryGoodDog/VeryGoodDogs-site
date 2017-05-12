@@ -1,0 +1,44 @@
+* {
+  margin: 0px;
+}
+
+#header {
+  position: fixed;
+  width: 100%;
+  outline: black solid 2px;
+  background-color: #d39023;
+}
+
+#headCont {
+  min-height: 80px;
+  width: 100%;
+  padding: 0;
+}
+
+#icon {
+  float: left;
+  margin-right: 1em;
+}
+
+#headtext {
+  width: 50%;
+  min-width: 10em;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  outline: none;
+}
+
+.showcase {
+  background-color: grey;
+  width: 50%;
+  min-width: 10em;
+  max-width: 40em;
+  margin: auto;
+  padding: 2em;
+  border-bottom: black solid 2px;
+}
