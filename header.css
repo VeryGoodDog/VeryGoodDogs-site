@@ -1,0 +1,44 @@
+* {
+  outline: dotted #999 2px;
+}
+html {
+  font-size: 100%;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+  outline: black solid 2px;
+  background-color: #d39023;
+  margin: 0;
+}
+
+.header img {
+  max-width: 100px;
+  width: 100%;
+  float: left;
+  margin-right: 1em;
+}
+
+.header h1 {
+  font-size: 1.25em;
+}
+
+.header h2 {
+  font-size: 1em;
+}
+
+#headCont {
+  width: 50%;
+  min-width: 10em;
+  white-space: nowrap;
+  margin: 0;
+}
+
+#links {
+  padding: 0;
+  padding-left: 1em;
+  outline: black solid 2px;
+  background-color: #d39023;
+  white-space: nowrap;
+}

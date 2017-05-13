@@ -9,11 +9,6 @@
   <div>
     <iframe src="/showcases/dev-stuff/adv-game/index.php" id="adv-gameiframe"></iframe>
   </div>
-  <div>
-    <a class="link" href="https://github.com/VeryGoodDog/adv_game">
-      adv_game's GitHub
-    </a>
-  </div>
 </div>
 <script>
 function size(el,height,width) {
