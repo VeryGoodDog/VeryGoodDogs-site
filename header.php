@@ -1,16 +1,16 @@
 <link rel="stylesheet" href="/header.css">
 <header class="header">
-  <a href="http://vgd.42seventeen.net/">
+  <a href="/index.php">
     <img id="icon" src="/VGD logo.png">
   </a>
-  <div id="headcont">
+  <div id="headCont">
     <h1>
-      <a href="http://vgd.42seventeen.net/">
+      <a href="/index.php">
         VeryGoodDog's
       </a>
     </h1>
     <h2>
-      <a href="http://vgd.42seventeen.net/">
+      <a href="/index.php">
         Online Portfolio
       </a>
     </h2>
