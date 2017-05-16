@@ -1,9 +1,32 @@
 <?php
-$fileToOpen = 'adv-gameShowcase.json';
-$file = fopen($fileToOpen,'r');
-$json = json_decode(fread($file,filesize($fileToOpen)));
-$path = $_SERVER['DOCUMENT_ROOT'].$json->path;
-echo $path;
-$target = fread(fopen($path,'r'),filesize($path));
-echo $target;
+function returnPage($showcase) {
+$file = file_get_contents($_SERVER['DOCUMENT_ROOT'].$showcase);
+$json = json_decode($file);
+$link = $json->link;
+$title = $json->title;
+$path = $json->path;
+$id = $json->id;
+echo '<div class="showcase">
+  <div>
+    <a class="link" href="'.$link.'">
+      <h3>'.$title.'</h3>
+    </a>
+  </div>
+  <div>
+    <iframe src="'.$path.'" id="'.$id.'"></iframe>
+  </div>
+</div>
+<script>
+function size(el,height,width) {
+  $(el)
+  .height(height)
+  .width(width);
+}
+
+size("#'.$id.'",$("#'.$id.'").width(),"100%");
+  $(window).resize(function (event) {
+    size("#'.$id.'",$("#'.$id.'").width(),"100%");
+  });
+</script>';
+}
 ?>

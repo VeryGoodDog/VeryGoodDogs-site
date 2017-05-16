@@ -2,9 +2,10 @@
 <head>
   <title>Bork!</title>
   <?php include_once $_SERVER['DOCUMENT_ROOT'].'/head.php'; ?>
+  <?php require $_SERVER['DOCUMENT_ROOT'].'/showcases/showcaseGen.php'; ?>
 </head>
 <body>
   <?php include_once $_SERVER['DOCUMENT_ROOT'].'/header.php'; ?>
-  <?php include_once $_SERVER['DOCUMENT_ROOT'].'/showcases/checkersShowcase.php'; ?>
-  <?php include_once $_SERVER['DOCUMENT_ROOT'].'/showcases/adv-gameShowcase.php'; ?>
+  <?php returnPage('/showcases/adv-gameShowcase.json') ?>
+  <?php returnPage('/showcases/checkersShowcase.json');?>
 </body>

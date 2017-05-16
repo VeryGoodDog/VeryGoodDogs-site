@@ -5,20 +5,7 @@
   <?php include_once $_SERVER['DOCUMENT_ROOT'].'/head.php'; ?>
 </head>
 <body>
-  <div>
-    <div class="commandLineDiv">
-      <textarea id="commandLine" placeholder="Command"></textarea>
-    </div>
-    <div class="outputDiv">
-      <textarea id="output" readonly="true"></textarea>
-    </div>
-  </div>
-  <script src="jquery/jquery-3.1.1.js"></script>
-  <script src="jquery/jquery-ui.js"></script>
-  <script src="commandContr.js"></script>
-  <script src="helper.js"></script>
-  <script src="commands.js"></script>
-  <script src="adv.js"></script>
-  <script src="vars.js"></script>
+  <?php include_once $_SERVER['DOCUMENT_ROOT'].'/header.php'; ?>
+  <?php include_once $_SERVER['DOCUMENT_ROOT'].'/showcases/dev-stuff/adv-game/adv-game.php'; ?>
 </body>
 </html>
