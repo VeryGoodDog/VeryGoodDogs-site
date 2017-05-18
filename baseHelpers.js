@@ -20,4 +20,5 @@ function size(el,height,width) {
   $(el)
   .height(height)
   .width(width);
+  console.log(el+'resized to: '+$(el).height()+' '+$(el).width());
 }
