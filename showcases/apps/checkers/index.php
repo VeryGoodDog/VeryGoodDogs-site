@@ -6,6 +6,6 @@
 </head>
 <body>
   <?php include_once $_SERVER['DOCUMENT_ROOT'].'/header.php'; ?>
-  <?php include_once $_SERVER['DOCUMENT_ROOT'].'/showcases/dev-stuff/checkers/checkers.php'; ?>
+  <?php include_once $_SERVER['DOCUMENT_ROOT'].'/showcases/apps/checkers/checkers.php'; ?>
 </body>
 </html>

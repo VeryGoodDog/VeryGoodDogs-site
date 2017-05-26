@@ -7,13 +7,14 @@ $title = $json->title;
 $path = $json->path;
 $id = $json->id;
 echo '<div class="showcase">
+  <link href="/showcases/showcase.css" rel="stylesheet">
   <div>
-    <a class="link" href="'.$link.'">
+    <a class="link" href="/showcases/apps'.$link.'">
       <h3>'.$title.'</h3>
     </a>
   </div>
   <div>
-    <iframe src="'.$path.'" id="'.$id.'"></iframe>
+    <iframe src="/showcases/apps'.$path.'" id="'.$id.'"></iframe>
   </div>
 </div>
 <script>

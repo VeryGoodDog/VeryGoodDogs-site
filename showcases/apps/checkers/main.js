@@ -1,4 +1,5 @@
 var boardWidth = $('#board').width();
+console.log(boardWidth);
 var currentPlayer = 'black';
 var transferLoc = [0,0];
 var validDrop = null;
@@ -12,13 +13,14 @@ var indexOfJump = 0;
 init();
 
 function generateChecker(x,y,classes) {
+  console.log('checker generated at: '+x+' '+y);
   $('[data-column='+x+'][data-row='+y+']')
   .html('<div id="'+x+''+y+'" data-crow='+y+' data-ccolumn='+x+'></div>');
   for (var i = 0; i < classes.length; i++) {
-    $('#'+x+y)
+    $('#'+x+''+y)
     .addClass(classes[i]);
   }
-  size('#'+x+y,boardWidth/8, boardWidth/8);
+  size('#'+x+''+y,boardWidth/8, boardWidth/8);
   $('#'+x+''+y)
   .draggable({
     revert: 'invalid',
@@ -38,10 +40,11 @@ function generateChecker(x,y,classes) {
         validDrop = false;
         togglePlayer();
         disableAllSpots();
-      } else {
+      } else if (validDrop) {
         deleteChecker(column,row);
         generateChecker(column,row,event.target.classList);
         disableAllSpots();
+        validDrop = false;
         activeChecker.active = false;
       }
     }
@@ -73,6 +76,28 @@ function generateChecker(x,y,classes) {
 }
 
 function init() {
+  console.log('init');
+
+  boardWidth = $('#board').width();
+  console.log(boardWidth);
+  size('#board', boardWidth, '40%');
+  size('.c', boardWidth, boardWidth/8);
+  size('.r', boardWidth/8, boardWidth/8);
+  size('#checkersHeader', boardWidth/7, 'auto');
+  size('#playerCont', boardWidth/7, 'auto');
+  setBoard();
+
+  $('.r')
+  .droppable({
+    drop: function (event) {
+      console.log(event.target.classList);
+      console.log('drop');
+      transferLoc[0] = Number(event.target.dataset.row);
+      transferLoc[1] = Number(event.target.dataset.column);
+      validDrop = true;
+      activeChecker.active = false;
+    }
+  });
   $('.red')
   .dblclick(function (event) {
     if (event.target.dataset != undefined) {
@@ -80,21 +105,6 @@ function init() {
       disableAllSpots();
     }
   })
-  .droppable({
-    drop: function (event) {
-      transferLoc[0] = Number(event.target.dataset.row);
-      transferLoc[1] = Number(event.target.dataset.column);
-      validDrop = true;
-      activeChecker.active = false;
-    }
-  });
-
-  size('#board',boardWidth,'40%');
-  size('.c', boardWidth, boardWidth/8);
-  size('.r', boardWidth/8, boardWidth/8);
-  size('#checkersHeader', boardWidth/7, 'auto');
-  size('#playerCont', boardWidth/7,boardWidth/3);
-  setBoard();
 
   $('#restartButton')
   .mouseover(function (event) {
@@ -134,12 +144,6 @@ function restrict(input,min,max) {
   } else {
     return input;
   }
-}
-
-function size(el,height,width) {
-  $(el)
-  .height(height)
-  .width(width);
 }
 
 function togglePlayer() {
@@ -550,5 +554,4 @@ function setBoard() {
 
   togglePlayer();
   disableAllChecker();
-  console.clear();
 }

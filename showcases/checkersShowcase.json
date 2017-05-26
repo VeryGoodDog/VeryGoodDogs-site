@@ -1,6 +1,6 @@
 {
-  "link":"/showcases/dev-stuff/checkers/index.php",
+  "link":"/checkers/index.php",
   "title":"Checkers!",
-  "path":"/showcases/dev-stuff/checkers/checkers.php",
+  "path":"/checkers/checkers.php",
   "id":"checkersiframe"
 }

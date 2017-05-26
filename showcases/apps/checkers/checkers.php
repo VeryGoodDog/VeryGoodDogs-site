@@ -1,8 +1,8 @@
 <head>
   <?php include_once $_SERVER['DOCUMENT_ROOT'].'/head.php'; ?>
 </head>
+<body>
 <link rel="stylesheet" href="main.css">
-<script scr="main.js"></script>
 <div id="checkersHeader">
   <div id="playerCont">
     <div class="playerMessage" id="playerTag">
@@ -159,3 +159,5 @@
     </div>
   </div>
 </div>
+<script src="main.js"></script>
+</body>

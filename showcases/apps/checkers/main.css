@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  white-space: nowrap;
 }
 
 #board {
@@ -9,7 +10,7 @@ body {
   max-width: 30em;
 }
 
-#header {
+#checkersHeader {
   margin: 1em;
   min-height: 2em;
 }
