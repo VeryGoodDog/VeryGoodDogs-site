@@ -8,21 +8,29 @@
   <?php
     $file = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/links/links.json');
     $json = json_decode($file);
+    echo "<div class='showcase'><ul id='mainNav'>";
     for ($i=0; $i < sizeof($json->links); $i++) {
       parseLink($json->links[$i]);
     }
+    echo "</ul></div>";
     function parseLink($links) {
+      echo "<li>";
       $title = $links->title;
       if ($links->link != NULL) {
         $link = $links->link;
+        echo "<a href= '/$link'>$title</a>";
+      } else {
+        echo "$title";
       }
       if ($links->children != NULL) {
+        echo "<ul>";
         for ($childrenI=0; $childrenI < sizeof($links->children); $childrenI++) {
           parseLink($links->children[$childrenI]);
         }
+        echo "</ul>";
       }
-      echo $title.$link;
       unset($title,$link,$children);
+      echo "</li>";
     }
   ?>
 </body>

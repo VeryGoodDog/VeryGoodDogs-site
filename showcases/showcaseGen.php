@@ -7,7 +7,6 @@ $title = $json->title;
 $path = $json->path;
 $id = $json->id;
 echo '<div class="showcase">
-  <link href="/showcases/showcase.css" rel="stylesheet">
   <div>
     <a class="link" href="/showcases/apps'.$link.'">
       <h3>'.$title.'</h3>

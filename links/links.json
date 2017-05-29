@@ -14,7 +14,16 @@
         },
         {
         "title":"Checkers!",
-        "link":"showcases/apps/checkers/index.php"
+        "link":"showcases/apps/checkers/index.php",
+        "children":[
+          {
+            "title":"test!"
+          },
+          {
+            "title":"test 2",
+            "link":"index.php"
+          }
+        ]
         }
       ]
     },
