@@ -11,6 +11,7 @@ html {
   background-color: #d39023;
   margin: 0;
   white-space: nowrap;
+  top: 0;
 }
 
 .header img {
@@ -29,6 +30,7 @@ html {
 }
 
 .header h1 {
+  padding-top: 0.5em;
   font-weight: 400;
   font-size: 1.25em;
   margin: 0;
@@ -46,6 +48,7 @@ html {
   outline: black solid 2px;
   background-color: #d39023;
   white-space: nowrap;
+  margin-top: 100px;
 }
 
 .link {
