@@ -2,20 +2,6 @@
   margin: 0px;
 }
 
-#links {
-  padding: 0;
-  padding-left: 1em;
-  outline: black solid 2px;
-  background-color: #d39023;
-  white-space: nowrap;
-}
-
-.link {
-  text-decoration: none;
-  color: black;
-  outline: none;
-}
-
 .showcase {
   background-color: grey;
   width: 50%;

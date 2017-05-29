@@ -39,3 +39,17 @@ html {
   font-size: 1em;
   margin: 0;
 }
+
+#links {
+  padding: 0;
+  padding-left: 1em;
+  outline: black solid 2px;
+  background-color: #d39023;
+  white-space: nowrap;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  outline: none;
+}
