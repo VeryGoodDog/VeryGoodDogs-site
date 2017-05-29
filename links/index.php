@@ -5,27 +5,24 @@
 </head>
 <body>
   <?php include_once $_SERVER['DOCUMENT_ROOT'].'/header.php'; ?>
-  <div class="showcase">
-    <h2>
-      Links:
-    </h2>
-    <ul>
-      <li>
-        <a class="link" href="/index.php">
-          Home
-        </a>
-        <ul>
-          <li>
-            <a class="link" href="">
-
-            </a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-  <script src="jquery/jquery-3.1.1.js"></script>
-  <script src="jquery/jquery-ui.js"></script>
-  <script src="baseHelpers.js"></script>
-  <script src="main.js"></script>
+  <?php
+    $file = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/links/links.json');
+    $json = json_decode($file);
+    for ($i=0; $i < sizeof($json->links); $i++) {
+      parseLink($json->links[$i]);
+    }
+    function parseLink($links) {
+      $title = $links->title;
+      if ($links->link != NULL) {
+        $link = $links->link;
+      }
+      if ($links->children != NULL) {
+        for ($childrenI=0; $childrenI < sizeof($links->children); $childrenI++) {
+          parseLink($links->children[$childrenI]);
+        }
+      }
+      echo $title.$link;
+      unset($title,$link,$children);
+    }
+  ?>
 </body>
