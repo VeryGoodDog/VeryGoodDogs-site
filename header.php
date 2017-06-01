@@ -17,6 +17,7 @@
   </div>
 </header>
 <div id="links">
-  <a class="link" href="/links/index.php">Links:</a>
-  <a class="link" href="https://github.com/VeryGoodDog">My GitHub</a>
+  <a class="link">Links:</a>
+  <a class="link" href="https://github.com/VeryGoodDog">My GitHub!</a>
+  <a class="link" href="/links/index.php">More!</a>
 </div>

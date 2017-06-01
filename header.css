@@ -49,6 +49,8 @@ body {
   background-color: #d39023;
   white-space: nowrap;
   margin-top: 100px;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 .link {
