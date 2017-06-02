@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
 <link rel="stylesheet" href="main.css">
 <link rel="stylesheet" href="/showcase.css">
+<link rel="stylesheet" href="/jquery/jquery-ui.css">
 <link rel="icon" href="VGD logo.png">
 <script src="/jquery/jquery-3.1.1.js"></script>
 <script src="/jquery/jquery-ui.js"></script>

@@ -20,17 +20,7 @@
     },
     {
       "title":"Photos!",
-      "link":"index.php",
-      "children":[
-        {
-          "title":"Actually Good Photos!",
-          "link":"index.php"
-        },
-        {
-          "title":"Good Photos!",
-          "link":"index.php"
-        }
-      ]
+      "link":"showcases/apps/photos/index.php"
     }
   ]
 }

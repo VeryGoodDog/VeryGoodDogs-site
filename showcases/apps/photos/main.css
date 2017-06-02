@@ -1,0 +1,15 @@
+.photo {
+  width: 100%;
+}
+
+li {
+  margin-left: 0;
+}
+
+.ui-menu {
+  width: 100px;
+}
+
+[data-level='4'] {
+  width: 200px;
+}

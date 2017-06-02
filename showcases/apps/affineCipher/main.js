@@ -5,12 +5,14 @@ function () {
   plainText = plainText.replace(punctRE, '').replace(/\s+/g, '');
   plainText = plainText.toLowerCase();
   var cipherText = [];
+  var cipher = [];
   var a = Number(document.getElementById('a').value);
   var b = Number(document.getElementById('b').value);
   console.clear();
   for (var i = 0, length = plainText.length; i < length; i++) {
-    cipherText[i] = ((a*(plainText.charCodeAt(i) - 97)) + b) % 26;
-    console.log(Number(plainText.charCodeAt(i)-97),cipherText[i],plainText[i]);
+    cipher[i] = ((a*(plainText.charCodeAt(i) - 97)) + b) % 26;
+    cipherText[i] = String.fromCharCode(cipher[i] + 97);
+    console.log(Number(plainText.charCodeAt(i)-97),plainText[i],cipher[i],cipherText[i]);
   }
   document.getElementById('out').value = cipherText;
 };
