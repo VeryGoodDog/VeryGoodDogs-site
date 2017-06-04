@@ -1,5 +1,5 @@
 <head>
-  <?php include_once $_SERVER['DOCUMENT_ROOT'].'/head.php'; ?>
+  <?php include_once $_SERVER['DOCUMENT_ROOT'].'/head/head.php'; ?>
 </head>
 <body>
 <link rel="stylesheet" href="main.css">

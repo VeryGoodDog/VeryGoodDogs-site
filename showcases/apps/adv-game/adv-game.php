@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Adventure!</title>
-  <?php include_once $_SERVER['DOCUMENT_ROOT'].'/head.php'; ?>
+  <?php include_once $_SERVER['DOCUMENT_ROOT'].'/head/head.php'; ?>
 </head>
 <body>
   <div>

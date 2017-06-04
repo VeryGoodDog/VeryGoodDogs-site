@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="/header.css">
+<link rel="stylesheet" href="/header/header.css">
 <header class="header">
   <a href="/index.php">
-    <img id="icon" src="/VGD logo.png">
+    <img id="icon" src="/include/VGD logo.png">
   </a>
   <div id="headCont">
     <h1>
