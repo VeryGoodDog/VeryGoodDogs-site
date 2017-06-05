@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <?php include_once $_SERVER['DOCUMENT_ROOT'].'/head/head.php'; ?>
-</head>
-<body>
-  <?php include_once $_SERVER['DOCUMENT_ROOT'].'/header/header.php'; ?>
+<?php
+  require $_SERVER['DOCUMENT_ROOT'].'/include/includeHead.php';
+?>
   <?php
   function createMenu($dir,$level) {
     if(is_dir($dir)) {

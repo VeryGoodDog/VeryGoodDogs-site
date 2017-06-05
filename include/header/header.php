@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/header/header.css">
+<link rel="stylesheet" href="/include/header/header.css">
 <header class="header">
   <a href="/index.php">
     <img id="icon" src="/include/VGD logo.png">

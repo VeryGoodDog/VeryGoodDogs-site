@@ -17,12 +17,6 @@ echo '<div class="showcase">
   </div>
 </div>
 <script>
-function size(el,height,width) {
-  $(el)
-  .height(height)
-  .width(width);
-}
-
 size("#'.$id.'",$("#'.$id.'").width(),"100%");
   $(window).resize(function (event) {
     size("#'.$id.'",$("#'.$id.'").width(),"100%");
