@@ -13,10 +13,10 @@
       <textarea id="output" readonly="true"></textarea>
     </div>
   </div>
+  <script src="vars.js"></script>
   <script src="helper.js"></script>
   <script src="commandContr.js"></script>
   <script src="commands.js"></script>
   <script src="adv.js"></script>
-  <script src="vars.js"></script>
 </body>
 </html>
