@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<head>
-  <title>Links!</title>
-  <?php include_once $_SERVER['DOCUMENT_ROOT'].'/head/head.php'; ?>
-</head>
-<body>
-  <?php include_once $_SERVER['DOCUMENT_ROOT'].'/header/header.php'; ?>
+<?php
+  require $_SERVER['DOCUMENT_ROOT'].'/include/includeHead.php';
+  includeHead('Bork!');
+?>
   <?php
     $file = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/links/links.json');
     $json = json_decode($file);
