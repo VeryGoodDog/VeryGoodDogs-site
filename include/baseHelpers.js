@@ -22,3 +22,12 @@ function size(el,height,width) {
   .width(width);
   console.log(el+' resized to: '+$(el).height()+' '+$(el).width());
 }
+
+function loadResize(func) {
+  $(document).ready(function (event) {
+    func();
+    $(window).resize(function (event) {
+      func();
+    });
+  });
+}

@@ -4,7 +4,8 @@
 <link rel="stylesheet" href="main.css">
 <link rel="stylesheet" href="/include/showcase.css">
 <link rel="stylesheet" href="/include/jquery-ui.css">
-<link rel="icon" href="include/VGD logo.png">
+<link rel="icon" href="/include/VGD logo.png">
 <script src="/include/jquery-3.1.1.js"></script>
 <script src="/include/jquery-ui.js"></script>
+<script src="/include/plugins.js"></script>
 <script src="/include/baseHelpers.js"></script>
