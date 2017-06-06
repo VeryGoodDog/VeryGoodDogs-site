@@ -10,18 +10,19 @@
     parseLinks($json->links);
     echo "</ul></div>";
     function parseLinks($links) {
-      for ($i=0; $i < sizeof($links); $i++) {
+      foreach ($links as $links) {
         echo "<li>";
-        $title = $links[$i]->title;
-        if ($links[$i]->link != NULL) {
-          $link = $links[$i]->link;
+        $title = $links->title;
+        if (!(is_null($links->link))) {
+          $link = $links->link;
           echo "<a href= '/$link'>$title</a>";
         } else {
           echo "$title";
         }
-        if ($links[$i]->children != NULL) {
+        if (!(is_null($links->children))) {
+          $children = $links->children;
           echo "<ul>";
-          parseLinks($links[$i]->children);
+          parseLinks($children);
           echo "</ul>";
         }
         unset($title,$link,$children);
