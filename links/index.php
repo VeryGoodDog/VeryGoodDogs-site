@@ -13,13 +13,13 @@
       foreach ($links as $links) {
         echo "<li>";
         $title = $links->title;
-        if (!(is_null($links->link))) {
+        if (isset($links->link)) {
           $link = $links->link;
           echo "<a href= '/$link'>$title</a>";
         } else {
           echo "$title";
         }
-        if (!(is_null($links->children))) {
+        if (isset($links->children)) {
           $children = $links->children;
           echo "<ul>";
           parseLinks($children);
