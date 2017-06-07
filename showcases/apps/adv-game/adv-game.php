@@ -5,11 +5,11 @@
   <?php include_once $_SERVER['DOCUMENT_ROOT'].'/include/head/head.php'; ?>
 </head>
 <body>
-  <div>
-    <div class="commandLineDiv">
+  <div id="gameWrapper" class="fullHeight">
+    <div id="commandLineDiv">
       <textarea id="commandLine" placeholder="Command"></textarea>
     </div>
-    <div class="outputDiv">
+    <div id="outputDiv">
       <textarea id="output" readonly="true"></textarea>
     </div>
   </div>

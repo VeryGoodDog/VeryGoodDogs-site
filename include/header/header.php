@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/include/header/header.css">
-<header class="header">
+<header id="header" class="header">
   <a href="/index.php">
     <img id="icon" src="/include/VGD logo.png">
   </a>
