@@ -69,6 +69,7 @@ function generateChecker(x,y,classes) {
       disableAllSpots();
       activeChecker.column = column;
       activeChecker.row = row;
+      activeChecker.classes = event.target.classList;
       activeChecker.active = true;
       fullCascade(column,row,event.target.classList[0]);
     }
@@ -77,24 +78,28 @@ function generateChecker(x,y,classes) {
 
 function init() {
   console.log('init');
-
-  boardWidth = $('#board').width();
-  console.log(boardWidth);
-  size('#board', boardWidth, '40%');
-  size('.c', boardWidth, boardWidth/8);
-  size('.r', boardWidth/8, boardWidth/8);
-  size('#checkersHeader', boardWidth/7, 'auto');
-  size('#playerCont', boardWidth/7, 'auto');
-  setBoard();
+  loadResize(function () {
+    boardWidth = $('#board').width();
+    size('#board', boardWidth, '40%');
+    size('.c', boardWidth, boardWidth/8);
+    size('.r', boardWidth/8, boardWidth/8);
+    size('#checkersHeader', boardWidth/7, 'auto');
+    size('#playerCont', boardWidth/7, 'auto');
+    setBoard();
+  });
 
   $('.r')
   .droppable({
     drop: function (event) {
-      console.log(event.target.classList);
-      console.log('drop');
-      transferLoc[0] = Number(event.target.dataset.row);
-      transferLoc[1] = Number(event.target.dataset.column);
-      validDrop = true;
+      if (event.target.classList[1] == 'red' || event.target.classList[1] == 'white') {
+        revertC();
+        console.log('drop',event.target.classList);
+      } else {
+        transferLoc[0] = Number(event.target.dataset.row);
+        transferLoc[1] = Number(event.target.dataset.column);
+        validDrop = true;
+        console.log('drop',event.target.classList,transferLoc);
+      }
       activeChecker.active = false;
     }
   });
@@ -123,17 +128,12 @@ function init() {
     .removeClass('red');
     setBoard();
   });
+}
 
-  $(window)
-  .resize(function (event) {
-    boardWidth = $('#board').width();
-    size('#board',boardWidth,'40%');
-    size('.c', boardWidth, boardWidth/8);
-    size('.r', boardWidth/8, boardWidth/8);
-    size('.checker', boardWidth/8, boardWidth/8)
-    size('#header', boardWidth/7, 'auto');
-    size('#playerCont', boardWidth/7,boardWidth/3);
-  });
+function revertC() {
+  console.log('c r ',activeChecker.column,activeChecker.row);
+  generateChecker(activeChecker.column,activeChecker.row,activeChecker.classes);
+  disableAllSpots();
 }
 
 function restrict(input,min,max) {
@@ -192,8 +192,10 @@ function setPlayer(player) {
 }
 
 function deleteChecker(x,y) {
-  console.log('checker deleted at:',x,' ',y);
-  $('#'+x+y).remove();
+  if (checkSpot(x,y).val == false) {
+    console.log('checker deleted at:',x,' ',y);
+    $('#'+x+y).remove();
+  }
 }
 
 function deleteAllChecker() {
