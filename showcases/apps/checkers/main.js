@@ -37,16 +37,13 @@ function generateChecker(x,y,classes) {
       if (validDrop && !(row === transferLoc[0] && column === transferLoc[1])) {
         deleteChecker(column,row);
         generateChecker(transferLoc[1],transferLoc[0],event.target.classList);
-        validDrop = false;
         togglePlayer();
-        disableAllSpots();
       } else if (validDrop) {
         deleteChecker(column,row);
         generateChecker(column,row,event.target.classList);
-        disableAllSpots();
-        validDrop = false;
         activeChecker.active = false;
       }
+      validDrop = false;
     }
   })
   .mouseenter(function (event) {
@@ -58,7 +55,9 @@ function generateChecker(x,y,classes) {
     }
   })
   .mouseleave(function (event) {
+    console.log('mouseleave');
     if (activeChecker.active !== true) {
+      console.log('mouseleave active');
       disableAllSpots();
     }
   })
@@ -91,15 +90,16 @@ function init() {
   $('.r')
   .droppable({
     drop: function (event) {
-      if (event.target.classList[1] == 'red' || event.target.classList[1] == 'white') {
+      if (!(event.target.classList.value.includes('yellow'))) {
+        console.log('drop revert',event.target.classList.value);
         revertC();
-        console.log('drop',event.target.classList);
       } else {
         transferLoc[0] = Number(event.target.dataset.row);
         transferLoc[1] = Number(event.target.dataset.column);
         validDrop = true;
-        console.log('drop',event.target.classList,transferLoc);
+        console.log('drop yellow',event.target.classList.value,transferLoc);
       }
+      disableAllSpots();
       activeChecker.active = false;
     }
   });
@@ -131,9 +131,8 @@ function init() {
 }
 
 function revertC() {
-  console.log('c r ',activeChecker.column,activeChecker.row);
+  console.log('checker reverted to: ',activeChecker.column,activeChecker.row);
   generateChecker(activeChecker.column,activeChecker.row,activeChecker.classes);
-  disableAllSpots();
 }
 
 function restrict(input,min,max) {
@@ -513,6 +512,7 @@ function disableSpot(x,y) {
 }
 
 function disableAllSpots() {
+  console.log('all spots disabled');
   for (var i = 1; i <= 8; i++) {
     for (var o = 1; o <= 8; o++) {
       disableSpot(i,o);
