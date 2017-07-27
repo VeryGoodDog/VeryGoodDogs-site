@@ -3,6 +3,23 @@ body {
   white-space: nowrap;
 }
 
+#gameWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.heightControl {
+  height: calc(100vh - 126px);
+}
+
+.fullHeight {
+  height: 100vh;
+}
+
+#boardWrapper {
+  flex-grow: 5;
+}
+
 #board {
   border: 3px solid black;
   margin: auto;
@@ -10,7 +27,12 @@ body {
   max-width: 30em;
 }
 
+#bottomSpacer {
+  flex-grow: 1;
+}
+
 #checkersHeader {
+  flex-grow: 1;
   margin: 1em;
   min-height: 2em;
 }
