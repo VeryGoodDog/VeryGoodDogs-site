@@ -1,0 +1,43 @@
+/** {
+  outline: 1px #999 dotted
+}*/
+
+body {
+  margin: 0;
+  background-color: black;
+}
+
+#gameWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.heightControl {
+  height: calc(100vh - 126px);
+}
+
+.fullHeight {
+  height: 100vh;
+}
+
+#commandLineDiv, #outputDiv {
+  width: 90%;
+  margin: auto;
+  flex-grow: 1;
+  padding: 1em 0;
+  display: flex;
+}
+
+#outputDiv {
+  flex-grow: 4;
+}
+
+textarea {
+  padding: 2%;
+  border: 0;
+  font-size: 20px;
+  font-family: monospace;
+  margin: 0;
+  resize: none;
+  width: 96%;
+}
