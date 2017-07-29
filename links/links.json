@@ -9,12 +9,11 @@
       "title":"Games!",
       "children":[
         {
-        "title":"Adventure!",
-        "link":"showcases/apps/adv-game/index.php"
-        },
-        {
         "title":"Checkers!",
         "link":"showcases/apps/checkers/index.php"
+        },{
+          "title":"pep",
+          "link":"pep.php"
         }
       ]
     },
