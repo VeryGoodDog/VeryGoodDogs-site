@@ -3,32 +3,42 @@ $('#commandLine').keyup(function(event) {
     const message = $('#commandLine').val().trim();
     const args = message.split(/\s+/g);
     const command = args.shift().toLowerCase();
-    config.consoleClear();
-    console.log(`command: ${command}\nargs: ${args}`);
+    controllers.consoleClear();
     try {
-      commands[command].run(config,args);
-    } catch (err) {
-      console.error(err);
+      if (!commands[command]) return;
+      let com = commands[command];
+      controllers.getCommand(com,args);
+    } catch (error) {
+      console.error(error);
     }
   }
 });
 
-const commands = {
-  ping: {
-    run: function (config, args) {
-      config.send(args[0]);
-    }
-  }
-};
-
-const config = {
+const controllers = {
   send: function (message) {
-    if (message != undefined) {
-      $('#output').prepend(`${message}\n`);
-      return;
-    }
+    if (typeof message === 'undefined') throw new Error('This requires an argument to send.');
+    $('#output').prepend(`${message}\n`);
   },
   consoleClear: function () {
     $('#commandLine').val('');
+  },
+  getCommand: function (com,args) {
+    console.log('command: ', com, 'args: ', args);
+    if (com.func) {
+      console.log('func');
+      if (com.config.requiresArgs && (!args || !args[0])) return controllers.send('that command requires arguments.');
+      if (com.config.requiresData && !data[command]) {
+        data[command] = {};
+        console.log(`generated data for: ${command}`);
+      }
+      com.func(args);
+    } else if (com.subCom[args[0]]) {
+      console.log('command');
+      let arg = args[0];
+      args.shift();
+      controllers.getCommand(com.subCom[arg],args);
+    } else {
+      console.log('no command found.');
+    }
   }
 };
