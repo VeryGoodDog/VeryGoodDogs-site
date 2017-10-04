@@ -1,0 +1,18 @@
+{
+  "link": "/checkers/index.php",
+  "title": "Checkers!",
+  "content": [
+    {
+      "iframe": {
+        "src": "/showcases/apps/checkers/checkers.php",
+        "id": "checkersiframe"
+      }
+    },
+    {
+      "a": {
+        "href": "/showcases/apps/checkers/index.php",
+        "content": "Play it!"
+      }
+    }
+  ]
+}
