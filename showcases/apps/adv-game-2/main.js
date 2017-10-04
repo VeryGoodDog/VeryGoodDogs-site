@@ -1,8 +1,8 @@
-$(document)
-.ready(function (event) {
+document.addEventListener('DOMContentLoaded', function() {
   if (document.getElementById('header') != null) {
-    $('#gameWrapper')
-    .removeClass('fullHeight')
-    .addClass('heightControl');
+    if (document.getElementById('gameWrapper').classList.contains('fullHeight')) {
+      document.getElementById('gameWrapper').classList.remove('fullHeight');
+      document.getElementById('gameWrapper').classList.add('heightControl');
+    }
   }
 });

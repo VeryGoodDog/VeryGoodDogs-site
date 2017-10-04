@@ -1,11 +1,16 @@
-$('#commandLine').keyup(function(event) {
+document.getElementById('commandLine').addEventListener('keyup',function (event) {
   if (event.key === 'Enter') {
-    const message = $('#commandLine').val().trim();
-    const args = message.split(/\s+/g);
-    const command = args.shift().toLowerCase();
-    controllers.consoleClear();
+    var message = document.getElementById('commandLine').value.trim();
+    var args = message.split(/\s+/g);
+    var command = args.shift().toLowerCase();
+    document.getElementById('commandLine').value = '';
     try {
-      if (!commands[command]) return;
+      if (!commands[command]) {
+        if (data.waiting[command]) {
+          data.waiting[command].func(data.waiting[command].args);
+        }
+        return;
+      }
       let com = commands[command];
       controllers.getCommand(com,args);
     } catch (error) {
@@ -13,39 +18,16 @@ $('#commandLine').keyup(function(event) {
     }
   }
 });
-
-const controllers = {
-  send: function (message) {
-    if (typeof message === 'undefined') throw new Error('This requires an argument to send.');
-    $('#output').prepend(`${message}\n`);
-  },
-  consoleClear: function () {
-    $('#commandLine').val('');
-  },
-  getCommand: function (com,args) {
-    console.log('command: ', com, 'args: ', args);
-    if (com.config.requiresData && !data[com]) {
-      data[com] = {};
-      console.log(`generated data for: ${com}`);
-    }
-    if (com.func) {
-      console.log('func');
-      if (com.config.requiresArgs && (!args || !args[0])) return controllers.send('that command requires arguments.');
-      com.func(args);
-    } else if (com.subCom[args[0]]) {
-      console.log('command');
-      let arg = args[0];
-      args.shift();
-      controllers.getCommand(com.subCom[arg],args);
-    } else {
-      console.log('no command found.');
-    }
-  }
-};
-const data = {}; const commands = {keyval: {config: {
+var data = {
+  waiting: []
+};var commands = {keyval: {config: {
+  name: 'keyval',
+  dataName: 'keyval',
   requiresData: true,
   requiresArgs: true
 },subCom: {add: {config: {
+  name: 'add',
+  dataName: 'keyval',
   requiresData: true,
   requiresArgs: true
 },func: function (args) {
@@ -57,12 +39,16 @@ const data = {}; const commands = {keyval: {config: {
     controllers.send(`generated object named: ${key} with a val of: ${data.keyval[key]}`);
   }
 }},del: {config: {
+  name: 'del',
+  dataName: 'keyval',
   requiresData: true,
   requiresArgs: true
 },func: function (args) {
   delete data.keyval[args[0]];
   controllers.send(`deleted ${args[0]}`);
 }},edit: {config: {
+  name: 'edit',
+  dataName: 'keyval',
   requiresData: true,
   requiresArgs: true
 },func: function (args) {
@@ -74,6 +60,8 @@ const data = {}; const commands = {keyval: {config: {
     controllers.send(`Could not find key for ${args[0]}`);
   }
 }},read: {config: {
+  name: 'read',
+  dataName: 'keyval',
   requiresData: true,
   requiresArgs: true
 },func: function (args) {
@@ -82,22 +70,50 @@ const data = {}; const commands = {keyval: {config: {
   } else {
     controllers.send(`Could not find key for ${args[0]}`);
   }
-}}}},pep: {config: {
-  requiresData: false,
+}}}},start: {config: {
+  name: 'start',
+  dataName: 'start',
+  requiresData: true,
   requiresArgs: false
 },func: function (args) {
-  if (args[0]) {
-    controllers.send(`Wowiw peps to ${args[0]}`);
-  } else {
-    controllers.send('no peps :(');
+  controllers.send('aaa');
+  controllers.wait('te', args, function (args) {
+    controllers.send(args);
+  });
+}}};var controllers = {consoleClear: function () {
+  document.getElementById('commandLine').value = '';
+},getCommand: function (com,args) {
+  if (com.config.requiresData && !data[com.config.dataName]) {
+    data[com.config.dataName] = {};
   }
-}},ping: {config: {
-  requiresData: false,
-  requiresArgs: false
-},func: function (args) {
-  if (args[0]) {
-    controllers.send(args[0]);
-  } else {
-    controllers.send('no ping :(');
+  if (com.func) {
+    if (com.config.requiresArgs && (!args || !args[0])) return;
+    com.func(args);
+  } else if (com.subCom[args[0]]) {
+    let arg = args[0];
+    args.shift();
+    controllers.getCommand(com.subCom[arg],args);
   }
-}}}
+},runCommand: function (path,args,com) {
+  if(!com) com = commands;
+  var p = path.shift();
+  console.log(path);
+  if (!path || !path[0]) {
+    if (com[p].config.requiresData && !data[com[p].config.dataName]) {
+      data[com[p].config.dataName] = {};
+    }
+    if(!args || !args[0]) args = null;
+    if(com[p].func) com[p].func(args);
+  } else {
+    console.log(com[p].subCom);
+    controllers.runCommand(path,args,com[p].subCom);
+  }
+},send: function (message) {
+  if (typeof message === 'undefined') throw new Error('This requires an argument to send.');
+  document.getElementById('output').prepend(`${message}\n`);
+},wait: function (trigger, args, after) {
+  var waitObj = {};
+  waitObj.func = after;
+  waitObj.args = args;
+  data.waiting[trigger] = waitObj;
+}}
