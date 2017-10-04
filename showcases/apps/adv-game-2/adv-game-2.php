@@ -13,7 +13,6 @@
       <textarea id="output" readonly="true"></textarea>
     </div>
   </div>
-  <script src="source/adv-game-2.js"></script>
-  <script src="source/commands.js"></script>
+  <script src="build/adv-game-2.js"></script>
 </body>
 </html>

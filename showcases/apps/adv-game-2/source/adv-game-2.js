@@ -24,13 +24,13 @@ const controllers = {
   },
   getCommand: function (com,args) {
     console.log('command: ', com, 'args: ', args);
+    if (com.config.requiresData && !data[com]) {
+      data[com] = {};
+      console.log(`generated data for: ${com}`);
+    }
     if (com.func) {
       console.log('func');
       if (com.config.requiresArgs && (!args || !args[0])) return controllers.send('that command requires arguments.');
-      if (com.config.requiresData && !data[command]) {
-        data[command] = {};
-        console.log(`generated data for: ${command}`);
-      }
       com.func(args);
     } else if (com.subCom[args[0]]) {
       console.log('command');
@@ -42,3 +42,4 @@ const controllers = {
     }
   }
 };
+const data = {};

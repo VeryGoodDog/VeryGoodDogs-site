@@ -1,0 +1,4 @@
+{
+  requiresData: true,
+  requiresArgs: true
+}
