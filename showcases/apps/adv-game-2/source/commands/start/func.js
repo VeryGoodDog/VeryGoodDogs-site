@@ -1,6 +1,6 @@
 function (args) {
-  controllers.send('aaa');
-  controllers.wait('te', args, function (args) {
-    controllers.send(args);
+  contr.send('aaa');
+  contr.wait('te\n', args, function (args) {
+    contr.send(args);
   });
 }

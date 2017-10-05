@@ -1,30 +1,56 @@
-document.getElementById('commandLine').addEventListener('keyup',function (event) {
+var commandLine = document.getElementById('commandLine');
+commandLine.addEventListener('keyup',function (event) {
+  var wait = commandLine.value;
+  for (var trigger in data.waiting) {
+    if (wait.includes(trigger)) {
+      data.waiting[trigger].func(data.waiting[trigger].args);
+      if (data.waiting[trigger].delOnFin) delete data.waiting[trigger];
+    }
+  }
   if (event.key === 'Enter') {
-    var message = document.getElementById('commandLine').value.trim();
+    var message = commandLine.value.trim().replace(/\n+/g,' ');
+    commandLine.value = '';
+    data.pastCommands.unshift(message);
     var args = message.split(/\s+/g);
     var command = args.shift().toLowerCase();
-    document.getElementById('commandLine').value = '';
     try {
-      if (!commands[command]) {
-        if (data.waiting[command]) {
-          data.waiting[command].func(data.waiting[command].args);
-        }
-        return;
-      }
-      let com = commands[command];
-      controllers.getCommand(com,args);
+      if (!commands[command]) return;
+      var com = commands[command];
+      console.log(com);
+      contr.getCommand(com,args);
     } catch (error) {
       console.error(error);
     }
+    return;
+  }
+});
+commandLine.addEventListener('keydown',function (event) {
+  if (event.key === 'ArrowUp') {
+    data.currentCommand = commandLine.value.trim().replace(/\n+/g,' ');
+    var pc = data.pastCommands;
+    data.pci++;
+    data.pci = data.pci >= pc.length - 1 ? pc.length - 1 : data.pci;
+    commandLine.value = pc[data.pci] ? pc[data.pci] : '';
+  }
+  if (event.key === 'ArrowDown') {
+    var pc = data.pastCommands;
+    data.pci--;
+    data.pci = data.pci < 0 ? 0 : data.pci;
+    commandLine.value = pc[data.pci] ? pc[data.pci] : '';
   }
 });
 var data = {
-  waiting: []
+  waiting: [],
+  pastCommands: [],
+  currentCommand: '',
+  pci: 0
 };var commands = {keyval: {config: {
   name: 'keyval',
   dataName: 'keyval',
   requiresData: true,
-  requiresArgs: true
+  requiresArgs: false
+},func: function (args) {
+  contr.send('use add, del, edit, or read to access the keyval storage');
 },subCom: {add: {config: {
   name: 'add',
   dataName: 'keyval',
@@ -32,11 +58,11 @@ var data = {
   requiresArgs: true
 },func: function (args) {
   if (typeof data.keyval[args[0]] != 'undefined') {
-    controllers.send(`${args[0]} already taken.`)
+    contr.send(`${args[0]} already taken.`)
   } else {
     let key = args[0]||'default'
     data.keyval[key] = args[1]||null;
-    controllers.send(`generated object named: ${key} with a val of: ${data.keyval[key]}`);
+    contr.send(`generated object named: ${key} with a val of: ${data.keyval[key]}`);
   }
 }},del: {config: {
   name: 'del',
@@ -45,7 +71,7 @@ var data = {
   requiresArgs: true
 },func: function (args) {
   delete data.keyval[args[0]];
-  controllers.send(`deleted ${args[0]}`);
+  contr.send(`deleted ${args[0]}`);
 }},edit: {config: {
   name: 'edit',
   dataName: 'keyval',
@@ -55,9 +81,9 @@ var data = {
   if (data.keyval[args[0]]) {
     let orig = data.keyval[args[0]];
     data.keyval[args[0]] = args[1]||null;
-    controllers.send(`Set ${args[0]} to ${data.keyval[args[0]]} from ${orig}`);
+    contr.send(`Set ${args[0]} to ${data.keyval[args[0]]} from ${orig}`);
   } else {
-    controllers.send(`Could not find key for ${args[0]}`);
+    contr.send(`Could not find key for ${args[0]}`);
   }
 }},read: {config: {
   name: 'read',
@@ -66,9 +92,9 @@ var data = {
   requiresArgs: true
 },func: function (args) {
   if (data.keyval[args[0]]) {
-    controllers.send(`Found value of ${data.keyval[args[0]]} for ${args[0]}`);
+    contr.send(`Found value of ${data.keyval[args[0]]} for ${args[0]}`);
   } else {
-    controllers.send(`Could not find key for ${args[0]}`);
+    contr.send(`Could not find key for ${args[0]}`);
   }
 }}}},start: {config: {
   name: 'start',
@@ -76,28 +102,27 @@ var data = {
   requiresData: true,
   requiresArgs: false
 },func: function (args) {
-  controllers.send('aaa');
-  controllers.wait('te', args, function (args) {
-    controllers.send(args);
+  contr.send('aaa');
+  contr.wait('te\n', args, function (args) {
+    contr.send(args);
   });
-}}};var controllers = {consoleClear: function () {
+}}};var contr = {consoleClear: function () {
   document.getElementById('commandLine').value = '';
 },getCommand: function (com,args) {
   if (com.config.requiresData && !data[com.config.dataName]) {
     data[com.config.dataName] = {};
   }
-  if (com.func) {
-    if (com.config.requiresArgs && (!args || !args[0])) return;
+  if (com.func && !(com.subCom ? com.subCom[args[0]] : false)) {
+    if(!args || !args[0]) args = null;
+    if (com.config.requiresArgs && !args) return;
     com.func(args);
   } else if (com.subCom[args[0]]) {
-    let arg = args[0];
-    args.shift();
-    controllers.getCommand(com.subCom[arg],args);
+    var arg = args.shift();
+    contr.getCommand(com.subCom[arg],args);
   }
 },runCommand: function (path,args,com) {
   if(!com) com = commands;
   var p = path.shift();
-  console.log(path);
   if (!path || !path[0]) {
     if (com[p].config.requiresData && !data[com[p].config.dataName]) {
       data[com[p].config.dataName] = {};
@@ -105,15 +130,14 @@ var data = {
     if(!args || !args[0]) args = null;
     if(com[p].func) com[p].func(args);
   } else {
-    console.log(com[p].subCom);
-    controllers.runCommand(path,args,com[p].subCom);
+    contr.runCommand(path,args,com[p].subCom);
   }
 },send: function (message) {
-  if (typeof message === 'undefined') throw new Error('This requires an argument to send.');
-  document.getElementById('output').prepend(`${message}\n`);
-},wait: function (trigger, args, after) {
+  if (message != '') document.getElementById('output').prepend(`${message}\n`);
+},wait: function (trigger, args, after, delOnFin) {
   var waitObj = {};
   waitObj.func = after;
   waitObj.args = args;
+  waitObj.delOnFin = delOnFin ? false : true;
   data.waiting[trigger] = waitObj;
 }}
