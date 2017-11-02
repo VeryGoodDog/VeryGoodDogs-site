@@ -1,0 +1,11 @@
+.photo {
+  width: 100%;
+}
+
+.lightBoxContainer {
+  z-index: 100;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
