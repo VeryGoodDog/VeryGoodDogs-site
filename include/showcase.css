@@ -19,3 +19,14 @@ iframe {
   background-color: white;
   border: none;
 }
+
+.wide-showcase {
+  font-family: 'Roboto', sans-serif;
+  background-color: #e8e8e8;
+  width: 75%;
+  min-width: 10em;
+  max-width: 40em;
+  margin: auto;
+  padding: 2em;
+  border-bottom: black solid 2px;
+}

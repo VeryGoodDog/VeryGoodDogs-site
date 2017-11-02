@@ -9,17 +9,38 @@
       "title":"Games!",
       "children":[
         {
-        "title":"Checkers!",
-        "link":"showcases/apps/checkers/index.php"
-        },{
-          "title":"pep",
-          "link":"pep.php"
+          "title":"Checkers!",
+          "link":"showcases/apps/checkers/index.php"
+        },
+        {
+          "title":"Adv-Game 2!",
+          "link":"showcases/apps/adv-game-2/index.php"
         }
       ]
     },
     {
       "title":"Photos!",
-      "link":"showcases/apps/photos/index.php"
+      "link":"showcases/photos/index.php",
+      "children":[
+        {
+          "title":"Special Boys!",
+          "link":"showcases/photos/featured/index.php"
+        },
+        {
+          "title":"AP Photo!",
+          "link":"showcases/APPhoto/index.php",
+          "children":[
+            {
+              "title":"Breadth!",
+              "link":"showcases/APPhoto/breadth/index.php"
+            },
+            {
+              "title":"Concentration!",
+              "link":"showcases/APPhoto/concentration/index.php"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
