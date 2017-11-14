@@ -5,19 +5,21 @@
   </a>
   <div id="headCont">
     <h1>
-      <a href="/index.php">
+      <a class="link" href="/index.php">
         VeryGoodDog's
       </a>
     </h1>
     <h2>
-      <a href="/index.php">
+      <a class="link" href="/index.php">
         Online Portfolio
       </a>
     </h2>
   </div>
 </header>
 <div id="links">
-  <a class="link">Links:</a>
-  <a class="link" href="https://github.com/VeryGoodDog">My GitHub!</a>
-  <a class="link" href="/links/index.php">More!</a>
+  <p>
+    Links:
+    <a href="https://github.com/VeryGoodDog">My GitHub!</a>
+    <a href="/links/index.php">More!</a>
+  </p>
 </div>

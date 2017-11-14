@@ -11,3 +11,7 @@ a {
 a:hover {
   color: red;
 }
+
+* {
+  margin: 0px;
+}
