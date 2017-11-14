@@ -21,7 +21,7 @@
   I'm a junior in high school right now!
   I really like programming and art, but, like, I can't really draw.<br>
   <i>So</i>, I turned to photography.
-  I really like making photos that you can't really tell what it is.
+  I really like <i>making</i> photos that you can't really tell what it is.
   At least, it's not realistic in some way.
   For example, <a href="breadth/photos/Hyper Worm.jpg" target="_blank">this</a>,
   or <a href="breadth/photos/ten dot jaypeg.jpg" target="_blank">this</a>,

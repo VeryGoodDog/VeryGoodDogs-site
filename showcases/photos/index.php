@@ -13,11 +13,20 @@
       }
       echo "</ul></li>";
     } else {
-      echo "<li><div data-path=".pathinfo($dir)['dirname']." data-filename=".pathinfo($dir)['basename'].">".pathinfo($dir)['basename']."</div></li>";
+      echo "
+        <li>
+          <div data-path=".pathinfo($dir)['dirname']." data-filename=".pathinfo($dir)['basename'].">".pathinfo($dir)['basename']."</div>
+        </li>
+      ";
     }
   }
 ?>
   <div class="wide-showcase">
+    <p>
+      A lot of these are pretty awful,
+      but I just wanna host all my pictures some where I can show people.
+    </p>
+    <hr>
     <?php
       echo "<ul id=menu data-level='0'>";
       createMenu('Photos',1);
@@ -27,6 +36,5 @@
       <p id="photoPrompt">Please select a photo!</p>
     </div>
   </div>
-  <script src="main.js"></script>
 </body>
 </html>
