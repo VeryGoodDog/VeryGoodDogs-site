@@ -12,7 +12,13 @@
   <hr>
   <h3>Photos:</h3>
   <?php
-  foreach(glob("photos/*") as $path) { echo "<img src=\"$path\" class=\"photo\">"; }
+  foreach(glob("photos/*") as $path) {
+    echo "
+      <a target=\"_blank\" href=\"$path\">
+        <img src=\"$path\" class=\"photo\">
+      </a>
+    ";
+  }
   ?>
 </div>
 </body>
