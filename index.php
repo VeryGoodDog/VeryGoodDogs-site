@@ -10,16 +10,24 @@
   </h1>
   <hr>
 <?php
-$posts = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/posts.json');
-$posts = json_decode($posts);
-for ($postNum=0; $postNum < sizeof($posts); $postNum++) {
-  $post = $posts[$postNum];
-  echo "<h3>$post->title</h3>";
-  echo "<p>$post->content</p>";
-  if ($postNum != sizeof($posts) - 1) {
-    echo "<hr>";
+  $conn = new mysqli('localhost','default','default','posts');
+  if ($conn->connect_errno) {
+    echo "failed to connect to database";
   }
-}
+
+  $posts = $conn->query("SELECT * FROM front");
+  $postCount = $posts->num_rows;
+
+  for ($i=$postCount-1; $i >= 0; $i--) {
+    echo "$i ";
+    $posts->data_seek($i);
+    $p = $posts->fetch_assoc();
+    echo $p["date"]."<br>";
+    echo $p["title"]."<br>";
+    echo $p["content"]."<br>";
+  }
+
+  $conn->close();
 ?>
 </div>
 </body>
