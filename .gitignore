@@ -5,3 +5,4 @@ showcases/apps/adv-game-2/node_modules
 showcases/apps/adv-game-2/package.json
 showcases/apps/adv-game-2/package-lock.json
 showcases/apps/adv-game-2/Gruntfile.js
+**/*.jpg
