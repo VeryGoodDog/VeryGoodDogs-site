@@ -5,30 +5,12 @@
   includeHead('Bork!');
 ?>
 <div class="showcase">
-  <h1>
-    VeryGoodDog's Front Page
+  <h1 class="showcaseHeader">
+    VeryGood.Dog's Home Page
   </h1>
   <hr>
-<?php
-  $conn = new mysqli('localhost','default','default','posts');
-  if ($conn->connect_errno) {
-    echo "failed to connect to database";
-  }
-
-  $posts = $conn->query("SELECT * FROM front");
-  $postCount = $posts->num_rows;
-
-  for ($i=$postCount-1; $i >= 0; $i--) {
-    echo "$i ";
-    $posts->data_seek($i);
-    $p = $posts->fetch_assoc();
-    echo $p["date"]."<br>";
-    echo $p["title"]."<br>";
-    echo $p["content"]."<br>";
-  }
-
-  $conn->close();
-?>
+	<p>This site is for my AP Portfolio, I need somewhere to put my photos for easy access.
+		<a href="/showcases/APPhoto/">Here</a> is where they are!</p>
 </div>
 </body>
 </html>

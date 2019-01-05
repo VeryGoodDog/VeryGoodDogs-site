@@ -1,12 +1,6 @@
 var commandLine = document.getElementById('commandLine');
 commandLine.addEventListener('keyup',function (event) {
-  var wait = commandLine.value;
-  for (var trigger in data.waiting) {
-    if (wait.includes(trigger)) {
-      data.waiting[trigger].func(data.waiting[trigger].args);
-      if (data.waiting[trigger].delOnFin) delete data.waiting[trigger];
-    }
-  }
+  contr.unwait();
   if (event.key === 'Enter') {
     var message = commandLine.value.trim().replace(/\n+/g,' ');
     commandLine.value = '';
@@ -16,7 +10,6 @@ commandLine.addEventListener('keyup',function (event) {
     try {
       if (!commands[command]) return;
       var com = commands[command];
-      console.log(com);
       contr.getCommand(com,args);
     } catch (error) {
       console.error(error);

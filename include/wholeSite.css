@@ -14,4 +14,19 @@ a:hover {
 
 * {
   margin: 0px;
+	/* outline: 1px dashed black; */
+}
+
+h1 {
+	font-weight: 400;
+  font-size: 1.5em;
+}
+
+h2 {
+	font-weight: 400;
+  font-size: 1em;
+}
+
+.baseColor {
+	background-color: #d39023;
 }

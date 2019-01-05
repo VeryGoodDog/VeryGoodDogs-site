@@ -1,6 +1,8 @@
 function (args) {
   contr.send('aaa');
-  contr.wait('te\n', args, function (args) {
+  if(!args) return;
+  var arg = args.shift();
+  contr.wait(arg, args, function (args) {
     contr.send(args);
   });
 }

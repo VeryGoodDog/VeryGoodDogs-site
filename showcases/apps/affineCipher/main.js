@@ -11,8 +11,8 @@ function () {
   console.clear();
   for (var i = 0, length = plainText.length; i < length; i++) {
     cipher[i] = ((a*(plainText.charCodeAt(i) - 97)) + b) % 26;
-    cipherText[i] = String.fromCharCode(cipher[i] + 97);
-    console.log(Number(plainText.charCodeAt(i)-97),plainText[i],cipher[i],cipherText[i]);
+    cipherText[i] = cipher[i].toString();
+    // console.log(Number(plainText.charCodeAt(i)-97),plainText[i],cipher[i],cipherText[i]);
   }
   document.getElementById('out').value = cipherText;
 };

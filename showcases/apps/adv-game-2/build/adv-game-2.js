@@ -1,12 +1,6 @@
 var commandLine = document.getElementById('commandLine');
 commandLine.addEventListener('keyup',function (event) {
-  var wait = commandLine.value;
-  for (var trigger in data.waiting) {
-    if (wait.includes(trigger)) {
-      data.waiting[trigger].func(data.waiting[trigger].args);
-      if (data.waiting[trigger].delOnFin) delete data.waiting[trigger];
-    }
-  }
+  contr.unwait();
   if (event.key === 'Enter') {
     var message = commandLine.value.trim().replace(/\n+/g,' ');
     commandLine.value = '';
@@ -16,7 +10,6 @@ commandLine.addEventListener('keyup',function (event) {
     try {
       if (!commands[command]) return;
       var com = commands[command];
-      console.log(com);
       contr.getCommand(com,args);
     } catch (error) {
       console.error(error);
@@ -55,14 +48,14 @@ var data = {
   name: 'add',
   dataName: 'keyval',
   requiresData: true,
-  requiresArgs: true
+  requiresArgs: false
 },func: function (args) {
-  if (typeof data.keyval[args[0]] != 'undefined') {
+  if (args ? data.keyval[args[0]] : false) {
     contr.send(`${args[0]} already taken.`)
   } else {
-    let key = args[0]||'default'
-    data.keyval[key] = args[1]||null;
-    contr.send(`generated object named: ${key} with a val of: ${data.keyval[key]}`);
+    let key = args ? args[0] : 'default';
+    data.keyval[key] = args ? args[1] : null;
+    contr.send(`Generated KV pair named: ${key} with a value of: ${data.keyval[key]}`);
   }
 }},del: {config: {
   name: 'del',
@@ -71,7 +64,7 @@ var data = {
   requiresArgs: true
 },func: function (args) {
   delete data.keyval[args[0]];
-  contr.send(`deleted ${args[0]}`);
+  contr.send(`Deleted ${args[0]}`);
 }},edit: {config: {
   name: 'edit',
   dataName: 'keyval',
@@ -103,7 +96,9 @@ var data = {
   requiresArgs: false
 },func: function (args) {
   contr.send('aaa');
-  contr.wait('te\n', args, function (args) {
+  if(!args) return;
+  var arg = args.shift();
+  contr.wait(arg, args, function (args) {
     contr.send(args);
   });
 }}};var contr = {consoleClear: function () {
@@ -133,11 +128,32 @@ var data = {
     contr.runCommand(path,args,com[p].subCom);
   }
 },send: function (message) {
-  if (message != '') document.getElementById('output').prepend(`${message}\n`);
+  if (message == '') return;
+  var out = document.getElementById('output');
+  switch (typeof message) {
+    case 'object':
+      message = JSON.stringify(message).replace(/"+/g,' ');
+      out.prepend(`${message}\n`);
+      break;
+    case 'string':
+      out.prepend(`${message}\n`);
+      break;
+    default:
+      console.log('unknown message type');
+  }
+},unwait: function () {
+  var wait = commandLine.value;
+  for (var trigger in data.waiting) {
+    if (wait.includes(trigger)) {
+      data.waiting[trigger].func(data.waiting[trigger].args);
+      if (data.waiting[trigger].delOnFin) delete data.waiting[trigger];
+    }
+  }
 },wait: function (trigger, args, after, delOnFin) {
   var waitObj = {};
   waitObj.func = after;
   waitObj.args = args;
   waitObj.delOnFin = delOnFin ? false : true;
+  waitObj.enter = trigger.endsWith('\n') ? true : false;
   data.waiting[trigger] = waitObj;
 }}

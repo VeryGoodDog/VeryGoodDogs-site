@@ -1,12 +1,16 @@
 .showcase {
   font-family: 'Roboto', sans-serif;
   background-color: #e8e8e8;
-  width: 50%;
+  width: 60%;
   min-width: 10em;
   max-width: 40em;
   margin: auto;
   padding: 2em;
   border-bottom: black solid 2px;
+}
+
+.showcase p {
+	font-size: 17px;
 }
 
 .showcaseHeader {
