@@ -1,8 +1,5 @@
 include/head/head.php
 .DS_Store
 showcases/apps/photos/Photos
-showcases/apps/adv-game-2/node_modules
-showcases/apps/adv-game-2/package.json
-showcases/apps/adv-game-2/package-lock.json
-showcases/apps/adv-game-2/Gruntfile.js
+showcases/apps/adv-game-2/**
 **/*.jpg

@@ -3,7 +3,8 @@
 </head>
 <body>
 <link rel="stylesheet" href="main.css">
-<div id="gameWrapper">
+Alas, this page doesn't work.
+<!-- <div id="gameWrapper">
   <div id="checkersHeader">
     <div id="playerCont">
       <div class="playerMessage" id="playerTag">
@@ -164,6 +165,6 @@
   </div>
   <div id="bottomSpacer">
   </div>
-</div>
-<script src="checkers.js"></script>
+</div> -->
+<!-- <script src="checkers.js"></script> -->
 </body>
