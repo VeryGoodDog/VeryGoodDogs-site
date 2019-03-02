@@ -24,11 +24,11 @@ class Markdeep
     ),
     'IM' => array(
       'PAT' => "/\R!\[(.+)\]\((.+)\)/m",
-			'IMP' => "<img src=\"$2\" alt=\"$1\">"
+			'IMP' => "<img src=\"$2\" alt=\"$1\" class=\"photo\">"
     ),
     'LI'  => array(
       'PAT' => "/\[(.+)\]\((.+)\)/m",
-			'IMP' => "<a href=\"$2\">$1</a>"
+			'IMP' => "<a href=\"$2\" class=\"link\">$1</a>"
     )
   );
     

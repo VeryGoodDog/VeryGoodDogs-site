@@ -24,9 +24,13 @@ h1 {
 
 h2 {
 	font-weight: 400;
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
 .baseColor {
 	background-color: #d39023;
+}
+
+.photo {
+  width: 100%;
 }
