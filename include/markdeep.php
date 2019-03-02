@@ -38,10 +38,9 @@ class Markdeep
   
     public static function create(string $source)
     {
-        $file = file_get_contents($source);
 				foreach (Markdeep::$ELEM as $k => $spec) {
-					$file = preg_replace($spec['PAT'],$spec['IMP'],$file);
+					$source = preg_replace($spec['PAT'],$spec['IMP'],$source);
 				}
-        return $file;
+        return $source;
     }
 }
