@@ -3,3 +3,4 @@ include/head/head.php
 showcases/apps/photos/Photos
 showcases/apps/adv-game-2/**
 **/*.jpg
+*.css

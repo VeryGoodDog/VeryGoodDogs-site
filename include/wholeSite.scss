@@ -1,0 +1,27 @@
+@import "header";
+@import "showcase";
+
+$default-font: 'Roboto',sans-serif;
+
+* {
+  margin: 0px;
+	/* outline: 1px dashed black; */
+}
+
+html {
+  font-size: 20px;
+  font-family: $default-font;
+}
+
+body {
+  font-size: 100%;
+}
+
+a {
+	
+  color: grey;
+  text-decoration: none;
+	&:hover {
+		color: red;
+	}
+}
