@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
-<?php
-  require $_SERVER['DOCUMENT_ROOT'].'/include/includeHead.php';
-  includeHead('Concentration Photos!');
-?>
-<div class="wide-showcase">
+<head>
+<?php require $_SERVER['DOCUMENT_ROOT'].'/include/head/head.php'; ?>
+	<title>Concentration Photos!</title>
+</head>
+<?php require $_SERVER['DOCUMENT_ROOT'].'/include/header.php'; ?>
+<?php require $_SERVER['DOCUMENT_ROOT'].'/include/markdeep.php'; ?>
+<div class="showcase--wide">
   <h1>Concentration</h1>
   My concentration is <i>going</i> to be an idea I develop to show skill and ability.
   I still haven't actually started the thing.

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
-<?php
-  require $_SERVER['DOCUMENT_ROOT'].'/include/includeHead.php';
-  includeHead('AP Photo ... Photos!');
-?>
+<head>
+<?php require $_SERVER['DOCUMENT_ROOT'].'/include/head/head.php'; ?>
+	<title>AP Photo ... Photos!</title>
+</head>
+<?php require $_SERVER['DOCUMENT_ROOT'].'/include/header.php'; ?>
+<?php require $_SERVER['DOCUMENT_ROOT'].'/include/markdeep.php'; ?>
 <div class="showcase">
   <h3 class="showcaseHeader">Info:</h3>
   <p class="showcaseBody">

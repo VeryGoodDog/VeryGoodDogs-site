@@ -1,12 +1,16 @@
-$showcase-font: {
-		family: 'Roboto',sans-serif;
+@mixin showcase-font {
+	font: {
+		family: 'Roboto', sans-serif;
 		size: 1em;
 	}
+}
+
+$default-grey: #e8e8e8;
 $border: black solid 2px;
 
 .showcase {
-  font-family: $showcase-font;
-  background-color: #e8e8e8;
+	@include showcase-font;
+  background-color: $default-grey;
   width: 60%;
   min-width: 10em;
   max-width: 40em;
@@ -15,20 +19,20 @@ $border: black solid 2px;
   border: {
 		bottom: $border;
 	}
-	p {
-		font: {
-			size: 17px;
-		}
-	}
 	
 	&--wide {
 		width: 75%;
 	}
-}
+	
+	h1 {
+		font-weight: 400;
+	  font-size: 1.5em;
+	}
 
-.showcaseHeader {
-  text-decoration: none;
-  color: black;
+	h2 {
+		font-weight: 400;
+	  font-size: 1.2em;
+	}
 }
 
 iframe {

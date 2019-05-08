@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<?php
-  require $_SERVER['DOCUMENT_ROOT'].'/include/includeHead.php';
-  includeHead('Bork!');
-?>
+<html>
+<head>
+<?php require $_SERVER['DOCUMENT_ROOT'].'/include/head/head.php'; ?>
+	<title>Bork!</title>
+</head>
+<?php require $_SERVER['DOCUMENT_ROOT'].'/include/header.php'; ?>
   <?php
     $file = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/links/links.json');
     $json = json_decode($file);
@@ -31,3 +33,4 @@
     }
   ?>
 </body>
+</html>

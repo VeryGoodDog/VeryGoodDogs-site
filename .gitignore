@@ -4,3 +4,4 @@ showcases/apps/photos/Photos
 showcases/apps/adv-game-2/**
 **/*.jpg
 *.css
+test/index.php

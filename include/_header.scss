@@ -1,52 +1,59 @@
-$header-font:
-
-body {
-  font-size: 100%;
+@mixin header-font {
+	font: {
+		family: 'Roboto Slab', serif;
+	}
 }
 
+$outline: black solid 2px;
+$default-orange: #d39023;
+
 .header {
-  font-family: 'Roboto Slab', serif;
+  @include header-font;
   position: fixed;
   width: 100%;
-  outline: black solid 2px;
-  background-color: #d39023;
+  outline: $outline;
+  background-color: $default-orange;
   white-space: nowrap;
   top: 0;
   z-index: 100;
-}
-
-.header img {
-  max-width: 100px;
-  width: 100%;
-  float: left;
-  margin-right: 1em;
-}
-
-.header a {
-  width: 50%;
-  min-width: 10em;
-  color: black;
-  text-decoration: none;
-}
-
-.header h1 {
-  padding-top: 0.5em;
-  font-weight: 400;
-  font-size: 1.25em;
-}
-
-.header h2 {
-  font-weight: 400;
-  font-size: 1em;
+	
+	img {
+	  max-width: 100px;
+	  width: 100%;
+	  float: left;
+	  margin-right: 1em;
+	}
+	
+	a {
+	  width: 50%;
+	  min-width: 10em;
+	  color: black;
+	  text-decoration: none;
+	}
+	
+	h1 {
+	  padding-top: 0.5em;
+	  font-weight: 400;
+	  font-size: 1.25em;
+	}
+	
+	h2 {
+	  font-weight: 400;
+	  font-size: 1em;
+	}
 }
 
 #links {
   padding: 0;
   padding-left: 1em;
-  outline: black solid 2px;
-  background-color: #d39023;
+  outline: $outline;
+  background-color: $default-orange;
   white-space: nowrap;
   margin-top: 100px;
   padding-top: 3px;
   padding-bottom: 3px;
+	
+	a {
+		color: black;
+	}
 }

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
-<?php
-  require $_SERVER['DOCUMENT_ROOT'].'/include/includeHead.php';
-  includeHead('Bork!');
-?>
+<head>
+<?php require $_SERVER['DOCUMENT_ROOT'].'/include/head/head.php'; ?>
+	<title>Bork!</title>
+</head>
+<?php require $_SERVER['DOCUMENT_ROOT'].'/include/header.php'; ?>
 <div class="showcase">
   <h1 class="showcaseHeader">
     VeryGood.Dog's Home Page
