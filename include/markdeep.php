@@ -4,11 +4,11 @@ class Markdeep
     private static $ELEM = array(
     'HO' => array(
       'PAT' => "/^#\s(.+)/m",
-			'IMP' => "<h1>$1</h1>"
+			'IMP' => "<h1 class=\"showcaseHeader\">$1</h1>"
 		),
     'HT' => array(
       'PAT' => "/^##\s(.+)/m",
-			'IMP' => "<h2>$1</h2>"
+			'IMP' => "<h2 class=\"showcaseHeaderSub\">$1</h2>"
     ),
     'HR'  => array(
       'PAT' => "/^(---)$/m",

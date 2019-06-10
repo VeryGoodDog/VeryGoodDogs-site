@@ -20,18 +20,43 @@ $border: black solid 2px;
 		bottom: $border;
 	}
 	
-	&--wide {
+	.wide {
 		width: 75%;
 	}
 	
-	h1 {
-		font-weight: 400;
-	  font-size: 1.5em;
+	h1.showcaseHeader {
+		margin: {
+			top: 1em;
+			bottom: .5em;
+		}
+		font: {
+			weight: 400;
+	  	size: 1.5em;
+		}
 	}
 
-	h2 {
-		font-weight: 400;
-	  font-size: 1.2em;
+	h2.showcaseHeaderSub {
+		margin: {
+			top: 1em;
+			bottom: .5em;
+		}
+		font: {
+			weight: 400;
+	  	size: 1.2em;
+		}
+	}
+	
+	.imageBoard {
+		width: 100%;
+		display: flex;
+		flex-flow: row wrap;
+		a {
+			width: 12em;
+			margin: auto;
+			img {
+				width: 100%;
+			}
+		}
 	}
 }
 
