@@ -36,7 +36,7 @@ class Markdeep
     {
     }
   
-    public static function create(string $source)
+    public static function create(string $source) : string
     {
 				foreach (Markdeep::$ELEM as $k => $spec) {
 					$source = preg_replace($spec['PAT'],$spec['IMP'],$source);

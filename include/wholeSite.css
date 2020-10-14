@@ -1,5 +1,57 @@
+.header {
+	font-family: 'Roboto Slab', serif;
+	position: fixed;
+	width: 100%;
+	outline: black solid 2px;
+	background-color: #d39023;
+	white-space: nowrap;
+	top: 0;
+	z-index: 100;
+}
+
+.header img {
+	max-width: 100px;
+	width: 100%;
+	float: left;
+	margin-right: 1em;
+}
+
+.header a {
+	width: 50%;
+	min-width: 10em;
+	color: black;
+	text-decoration: none;
+}
+
+.header h1 {
+	padding-top: 0.5em;
+	font-weight: 400;
+	font-size: 1.25em;
+}
+
+.header h2 {
+	font-weight: 400;
+	font-size: 1em;
+}
+
+#links {
+	padding: 0;
+	padding-left: 1em;
+	outline: black solid 2px;
+	background-color: #d39023;
+	white-space: nowrap;
+	margin-top: 100px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+#links a {
+	color: black;
+}
+
 .showcase {
-	font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1em;
 	background-color: #e8e8e8;
 	width: 60%;
 	min-width: 10em;
@@ -9,17 +61,37 @@
 	border-bottom: black solid 2px;
 }
 
-.showcase p {
-	font-size: 17px;
-}
-
-.showcase--wide {
+.showcase .wide {
 	width: 75%;
 }
 
-.showcaseHeader {
-	text-decoration: none;
-	color: black;
+.showcase h1 {
+	margin-top: 1em;
+	margin-bottom: .5em;
+	font-weight: 400;
+	font-size: 1.5em;
+}
+
+.showcase h2 {
+	margin-top: 1em;
+	margin-bottom: .5em;
+	font-weight: 400;
+	font-size: 1.2em;
+}
+
+.showcase .imageBoard {
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.showcase .imageBoard a {
+	width: 12em;
+	margin: auto;
+}
+
+.showcase .imageBoard a img {
+	width: 100%;
 }
 
 iframe {
@@ -43,29 +115,15 @@ html {
 	font-family: "Roboto", sans-serif;
 }
 
+body {
+	font-size: 100%;
+}
+
 a {
-	color: black;
+	color: grey;
 	text-decoration: none;
 }
 
 a:hover {
 	color: red;
-}
-
-h1 {
-	font-weight: 400;
-	font-size: 1.5em;
-}
-
-h2 {
-	font-weight: 400;
-	font-size: 1.2em;
-}
-
-.baseColor {
-	background-color: #d39023;
-}
-
-.photo {
-	width: 100%;
 }

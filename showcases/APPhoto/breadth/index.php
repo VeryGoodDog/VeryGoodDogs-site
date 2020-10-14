@@ -13,7 +13,6 @@ $in = <<<BOD
 These photos are the Breadth portion of the AP program.
 They are meant to showcase a diverse set of skills.<br>
 All images open into new pages.
-They have some info next to them.
 ---
 # Photos:
 BOD;
