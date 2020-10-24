@@ -18,6 +18,8 @@
 		However, that was in highschool. I am now studying computer science at university.
 		I plan on using this page as a portfolio, but that will most likely manifest
 		itself in the form of online utilities.
+		<br>
+		Also, I know this site doesn't look great, I'm a programmer not a desginer, cut me some slack.
 	</p>
 </div>
 </body>
